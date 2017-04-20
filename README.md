@@ -12,7 +12,7 @@
   const a: number = 1;
   const b: number = 2;
   ```
-- If you must reassign references, use let instead of var.
+- If you must reassign references, use `let` instead of `var`.
   > `let` is block-scoped rather than function-scoped like `var`.
   ```typescript
   // bad
@@ -82,6 +82,40 @@
   }
   ```
 - Never use `eval()` on a string, it opens too many vulnerabilities.
+- Do not unnecessarily escape characters in strings.
+  > Backslashes harm readability, thus they should only be present when necessary.
+  ```typescript
+  // bad
+  const foo: string = '\'this\' \i\s \"quoted\"';
+
+  // good
+  const foo: string = '\'this\' is "quoted"';
+  const foo: string = `my name is '${name}'`;
+  ```
+
+## Arrays
+- Annotate arrays as `foos: Foo[]` instead of `foos: Array<Foo>`.
+
+## Functions
+- Use named function expressions instead of function declarations.
+   > Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to name the expression - anonymous functions can make it harder to locate the problem in an Error's call stack.
+   ```typescript
+  // bad
+  function foo(): void {
+    // ...
+  }
+
+  // bad
+  const foo = (): void => {
+    // ...
+  };
+
+  // good
+  const foo = function bar(): void {
+    // ...
+  };
+  ```
+ 
 
 ## Names
 - Use PascalCase for type names.
@@ -162,4 +196,4 @@
       y = 2;
   ```
 - `else` goes on a separate line from the closing curly brace.
-- Use 4 spaces per indentation.
+- Use 2 spaces per indentation.
