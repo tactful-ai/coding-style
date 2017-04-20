@@ -115,7 +115,27 @@
     // ...
   };
   ```
- 
+- Use arrow functions over anonymous functions.
+  ```typescript
+  // bad
+  const foo = function(): void => {
+    // ...
+  };
+
+  // good
+  const foo = (): void => {
+    // ...
+  };
+  ```
+- Wrap immediately invoked function expressions in parentheses.
+  > An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
+  ```typescript
+  // immediately-invoked function expression (IIFE)
+  ((): void {
+    console.log('Welcome to the Internet. Please follow me.');
+  }());
+  ```
+- Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
 
 ## Names
 - Use PascalCase for type names.
@@ -170,7 +190,6 @@
   ```
 
 ## Style
-- Use arrow functions over anonymous function expressions.
 - Always surround arrow function parameters with parentheses. 
   - For example, `x => x + x` is wrong but the following are correct:
     ```typescript
