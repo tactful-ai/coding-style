@@ -1,5 +1,46 @@
 # TypeScript Coding Guidelines
 
+## References
+- Use `const` for all of your references; avoid using `var`.
+  > This ensures that you can't reassign your references, which can lead to bugs and difficult to comprehend code.
+  ```typescript
+  // bad
+  var a: number = 1;
+  var b: number = 2;
+
+  // good
+  const a: number = 1;
+  const b: number = 2;
+  ```
+- If you must reassign references, use let instead of var.
+  > `let` is block-scoped rather than function-scoped like `var`.
+  ```typescript
+  // bad
+  var count: number = 1;
+  if (true) {
+    count += 1;
+  }
+
+  // good, use the let.
+  let count: number = 1;
+  if (true) {
+    count += 1;
+  }
+  ```
+
+## Strings
+- Use template literals ` `` ` for all strings.
+  > This keeps things consistent and allows you use new lines and interpolation within the same format.
+  ```typescript
+  // bad
+  const name: string = "Capt. Janeway";
+  const name: string = 'Capt. Janeway';
+
+  // good
+  const name: string = `Capt. Janeway`;
+  ```
+- Never use `eval()` on a string, it opens too many vulnerabilities.
+
 ## Names
 - Use PascalCase for type names.
 - Do not use "I" as a prefix for interface names.
