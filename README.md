@@ -9,11 +9,6 @@
 - Do not use "_" as a prefix for private properties.
 - Use whole words in names when possible.
 
-## Components
-- 1 file per logical component (e.g. parser, scanner, emitter, checker).
-- Do not add new files. :)
-- files with ".generated.*" suffix are auto-generated, do not hand-edit them.
-
 ## Types
 - Do not export types/functions unless you need to share it across multiple components.
 - Do not introduce new types/values to the global namespace.
@@ -35,29 +30,40 @@
 
 ## Comments
 - Use JSDoc style comments for functions, interfaces, enums, and classes.
+  ```typescript
+  /**
+   * Log a message in red
+   * @param text {string} - the text to log
+   */
+  export const error = (text: string) => {
+      console.log();
+      console.log(`  ${chalk['black']['bgRed']['bold'](' ! ')} ${chalk['red'](text)}`);
+  };
+  ```
 
 ## Strings
-- Use double quotes for strings.
-- All strings visible to the user need to be localized (make an entry in diagnosticMessages.json).
+- Use backticks for strings, not just template literals.
+  ```typescript
+  `string text`
 
-## General Constructs
-For a variety of reasons, we avoid certain constructs, and use some of our own. Among them:
-- Do not use ECMAScript 5 functions; instead use those found in core.ts.
-- Do not use for..in statements; instead, use ts.forEach, ts.forEachKey and ts.forEachValue. Be aware of their slightly different semantics.
-- Try to use ts.forEach, ts.map, and ts.filter instead of loops when it is not strongly inconvenient.
+  `string text line 1
+   string text line 2`
+
+  `string text ${expression} string text`
+  ```
 
 ## Style
 - Use arrow functions over anonymous function expressions.
-- Only surround arrow function parameters when necessary. 
-  - For example, `typescript(x) => x + x` is wrong but the following are correct:
+- Always surround arrow function parameters with parentheses. 
+  - For example, `x => x + x` is wrong but the following are correct:
     ```typescript
-    x => x + x
+    (x) => x + x
     (x,y) => x + y
     <T>(x: T, y: T) => x === y
     ```
 - Always surround loop and conditional bodies with curly braces.
 - Open curly braces always go on the same line as whatever necessitates them.
-- Parenthesized constructs should have no surrounding whitespace. 
+- Parenthesized constructs should have no surrounding whitespace.
 - A single space follows commas, colons, and semicolons in those constructs. For example:
   ```typescript
   for (var i = 0, n = str.length; i < 10; i++) { }
@@ -66,7 +72,11 @@ For a variety of reasons, we avoid certain constructs, and use some of our own. 
   ```
 - Use a single declaration per variable statement. For example:
   ```typescript 
-  var x = 1; var y = 2;` over `var x = 1, y = 2;
+  var x = 1; 
+  var y = 2;` 
+  // instead of
+  `var x = 1, 
+       y = 2;
   ```
 - `else` goes on a separate line from the closing curly brace.
 - Use 4 spaces per indentation.
