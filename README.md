@@ -62,9 +62,11 @@ For a variety of reasons, we avoid certain constructs, and use some of our own. 
   ```typescript
   for (var i = 0, n = str.length; i < 10; i++) { }
   if (x < 10) { }
+  function f(x: number, y: string): void { }
   ```
-- `function f(x: number, y: string): void { }`
-- Use a single declaration per variable statement 
-- (i.e. use `var x = 1; var y = 2;` over `var x = 1, y = 2;`).
+- Use a single declaration per variable statement. For example:
+  ```typescript 
+  var x = 1; var y = 2;` over `var x = 1, y = 2;
+  ```
 - `else` goes on a separate line from the closing curly brace.
 - Use 4 spaces per indentation.
