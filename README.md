@@ -73,10 +73,10 @@
 - Use a single declaration per variable statement. For example:
   ```typescript 
   var x = 1; 
-  var y = 2;` 
+  var y = 2;
   // instead of
-  `var x = 1, 
-       y = 2;
+  var x = 1, 
+      y = 2;
   ```
 - `else` goes on a separate line from the closing curly brace.
 - Use 4 spaces per indentation.
