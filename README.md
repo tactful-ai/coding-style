@@ -1,5 +1,8 @@
 # TypeScript Coding Guidelines
 
+## Whitespace
+![Whitespace guidelines](https://raw.githubusercontent.com/javascript-tutorial/en.javascript.info/master/1-js/03-code-quality/02-coding-style/code-style.svg)
+
 ## References
 - Use `const` for all of your references; avoid using `var`.
   > This ensures that you can't reassign your references, which can lead to bugs and difficult to comprehend code.
